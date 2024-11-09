@@ -1,6 +1,8 @@
 const elementoParaInserirLivros = document.getElementById('livros')
-
+//elementoParaInserirLivros.innerHTML = '' criamos a string vazia para quando clicar aparecer somente os livros
+//foi adicionada para sempre limpar ao clicar e so mostrar pelo id relacionado a categoria
 function exibirOsLivrosNaTela(listaDeLivros) {
+  elementoParaInserirLivros.innerHTML = ''
     listaDeLivros.forEach(livro => {
         elementoParaInserirLivros.innerHTML += `
         <div class="livro">
