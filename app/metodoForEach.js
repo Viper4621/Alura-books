@@ -1,12 +1,16 @@
 const elementoParaInserirLivros = document.getElementById('livros')
-//elementoParaInserirLivros.innerHTML = '' criamos a string vazia para quando clicar aparecer somente os livros
-//foi adicionada para sempre limpar ao clicar e so mostrar pelo id relacionado a categoria
+const elementoComValorTotalDeLivrosDisponiveis = document.getElementById('valor_total_livros_disponiveis')
+
 function exibirOsLivrosNaTela(listaDeLivros) {
-  elementoParaInserirLivros.innerHTML = ''
+    elementoComValorTotalDeLivrosDisponiveis.innerHTML = ''
+    elementoParaInserirLivros.innerHTML = ''
     listaDeLivros.forEach(livro => {
+        // let disponibilidade = verificarDisponibilidadeDoLivro(livro)
+        //mesma forma acima porem em operador ternario assim não precisa de uma função com if e else
+        let disponibilidade = livro.quantidade > 0 ? 'livro__imagens' : 'livro__imagens indisponivel'
         elementoParaInserirLivros.innerHTML += `
         <div class="livro">
-        <img class="livro__imagens" src="${livro.imagem}"
+        <img class="${disponibilidade}" src="${livro.imagem}"
           alt="${livro.alt}" />
         <h2 class="livro__titulo">
           ${livro.titulo}
@@ -18,5 +22,12 @@ function exibirOsLivrosNaTela(listaDeLivros) {
         </div>
       </div>
         `
-    })
+    }) 
 }
+// function verificarDisponibilidadeDoLivro(livro){
+//   if (livro.quantidade >0){
+//     return 'livro__imagens'
+//   } else {
+//     return 'livro__imagens indisponivel'
+//   }
+// }
